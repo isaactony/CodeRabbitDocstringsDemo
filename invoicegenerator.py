@@ -3,6 +3,15 @@ from reportlab.pdfgen import canvas
 from datetime import datetime
 
 def generate_invoice(customer_name, items):
+    """
+    Generates a PDF invoice for a customer with a list of items.
+    
+    Args:
+        customer_name: The name of the customer to appear on the invoice.
+        items: A list of tuples, each containing (item name, quantity, price).
+    
+    The generated PDF includes the invoice header, customer name, date, itemized table, and grand total. The file is saved with a timestamped filename, and a confirmation message is printed upon completion.
+    """
     filename = f"invoice_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
     c = canvas.Canvas(filename, pagesize=A4)
     width, height = A4
